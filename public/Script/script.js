@@ -20,6 +20,38 @@ const templates = {
         </div>`,
 
         home: ` <div id="home">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                        <div class="container">
+                          <img src="images/nysl_logo_1.png" alt="logo-header" id="logoHeader">
+                          <a class="navbar-brand" href="#">Northside Young Soccer Ligue</a>
+                          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
+                          <div class="collapse navbar-collapse" id="navbarResponsive">
+                               
+                            <ul class="navbar-nav ml-auto">
+                              </template>
+                                <template v-else>
+                                <li class="nav-item active">
+                                <a class="nav-link" @click="view = 'home'">Home
+                                  <span class="sr-only">(current)</span></a>
+                              </li>
+                            
+                            <li class="nav-item">
+                            <a class="nav-link" @click="view = 'schedule'">Schedule</a>
+                            </li>
+                              <li class="nav-item">
+                                <a class="nav-link" @click="view = 'contact'">Contact</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" @click="view = 'forum'">Forum</a></li>
+                            </ul>
+                            <component :is="view" :user = "guest"></component>
+                            </template>
+                            </main>
+                            </div>
+                            </div>
+                            </nav>
         
         <h3>Upcoming Events<span class="title-background1"></span></h3>
         <header>
@@ -98,20 +130,20 @@ const templates = {
         </div>`,
         
     schedule:`<div id="schedule">
-        <template v-if="showInfo">
+    <template v-if="showInfo">
         <button @click="showInfo = false">Back</button>
-        <chat :match="match" :user="user"></chat>
+        <match-info :match="match" :user="user"></match-info>
         </template>
         <template v-else>
         <ul>
-        <li v-for="match in matches">
-        <span>{{match.date}}</span> <span>{{match.team1}} vs {{match.team2}}</span>
-        <button class="btn" @click="matchInfo(match)">+</button>
-        </li>
+            <li v-for="match in matches">
+                <span>{{match.date}}</span> <span>{{match.team1}} vs {{match.team2}}</span>
+                <button class="btn" @click="matchInfo(match)">+</button>
+            </li>
         </ul>
         </template>
-            
-        </div>`,
+    
+</div>`,
     contact: `<div id ="contact">
             <div class="section">
             <h2><span>Contact Me</span></h2>
@@ -197,7 +229,7 @@ const templates = {
     let app = new Vue({
         el: '#app',
         data: {
-            view: 'contact',
+            view: 'home',
             schedule: {},
             user: 'guest',
             chat: {},
@@ -206,11 +238,11 @@ const templates = {
         
         methods: {
             login(){
-                let provider = new firebase.auth.GoogleAuthProvider();
-                firebase.auth().signInWithPopup(provider)
+                let providerGoogle = new firebase.auth.GoogleAuthProvider();
+                firebase.auth().signInWithPopup(providerGoogle)
                 .then(function(result){
                     
-                    firebase.database().ref('schedule/').once('value')
+                    firebase.database().ref('/schedule/').once('value')
                     .then(function(snapshot){
                         app.schedule = snapshot.val()
                         app.user = result.user
@@ -226,8 +258,26 @@ const templates = {
                     app.user = 'guest'
                     app.schedule = {}
                 })
-            }
-            }, 
+            },
+            logInEmail(){
+                let email= document.querySelector('#inputEmail').value
+                let pass= document.querySelector('#inputPassword').value
+                
+                firebase.auth().signInWithEmailAndPassword(email, pass).then(function(result){
+                   
+                              
+                    app.schedule = snapshot.val()
+                        app.user = result.user
+                    
+                }).catch(function(error){
+                    let errorMsg= error.message;
+                    console.log(errorMsg);
+                   
+                })
+                
+            },
+            
+            },
             components: {
                 home: {
                     props: ['user'],
