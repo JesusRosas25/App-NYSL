@@ -137,7 +137,7 @@ const templates = {
         <template v-else>
         <ul>
             <li v-for="match in matches">
-                <span>{{match.date}}</span> <span>{{match.nombre1}} vs {{match.team2}}</span>
+                <span>{{match.date}}</span> <span>{{match.team1}} vs {{match.team2}}</span>
                 <button class="btn" @click="matchInfo(match)">+</button>
             </li>
         </ul>
@@ -225,27 +225,28 @@ const templates = {
             </main>
             </div>
             </div>`}
+            
     
     let app = new Vue({
         el: '#app',
         data: {
             view: 'home',
-            games: {},
+            schedule: {},
+            matches: [],
             user: 'guest',
             chat: {},
             
-        },
-        
+    },
         methods: {
             login(){
                 let providerGoogle = new firebase.auth.GoogleAuthProvider();
                 firebase.auth().signInWithPopup(providerGoogle)
                 .then(function(result){
                     
-                    firebase.database().ref('/').once('value')
+                    firebase.database().ref('/schedule/').once('value')
                     .then(function(snapshot){
-                        app.games = snapshot.val()
-                        app.user = result.user  
+                        app.schedule = snapshot.val()
+                        app.user = result.user
                     })
                 })
                 .catch(function(error){
@@ -256,7 +257,7 @@ const templates = {
                 firebase.auth().signOut()
                 .then(function(){
                     app.user = 'guest'
-                    app.games = {}
+                    app.schedule = {}
                 })
             },
             logInEmail(){
@@ -266,7 +267,7 @@ const templates = {
                 firebase.auth().signInWithEmailAndPassword(email, pass).then(function(result){
                    
                               
-                    app.games = snapshot.val()
+                    app.schedule = snapshot.val()
                         app.user = result.user
                     
                 }).catch(function(error){
@@ -276,8 +277,20 @@ const templates = {
                 })
                 
             },
+            filtrarPartidos(numberMonth, teams){
+                if(teams !== 'All'){
+                    this.matches = matches.filter(x => x.team1 == teamName && x.month == numberMonth || x.team2 == teamName && x.month == numberMonth);
+                }else{
+                    this.matches = matches.filter(x => x.month == nunberMonth);
+                    }
+                this.teamSelecd = teamName;
+                this.mesSelecd = numberMonth;
+                var url = this.partidos[0].url;
+                this.selecdStadium(url, 0);
+         } 
+        },
             
-            },
+            
             components: {
                 home: {
                     props: ['user'],
@@ -296,9 +309,9 @@ const templates = {
                                 month++
                                 temp = i - 1
                             }
-                            if(app.games[month][day + i - temp]){
-                                for(match in app.games[month][day + i]){
-                                    nextMatches.push(app.games[month][day + i][match])
+                            if(app.schedule[month][day + i - temp]){
+                                for(match in app.schedule[month][day + i]){
+                                    nextMatches.push(app.schedule[month][day + i][match])
                                 }
                             }
                         }
@@ -324,19 +337,19 @@ const templates = {
                     }
                 },
                 computed:{
-                    matches(){
-                         
+                    match(){
                         let matches = []
-                        for(month in app.games){
-                            for(date in app.games[month]){
-                                for(match in app.games[month][date]){
-                                    matches.push(app.games[month][date][match])
+                        for(month in app.schedule){
+                            for(date in app.schedule[month]){
+                                for(match in app.schedule[month][date]){
+                                    matches.push(app.schedule[month][date][match])
                                 }
                             }
                         }
                         return matches
                     }
-                },
+                }
+                ,
                 template: templates.schedule,
 
                 components: {
