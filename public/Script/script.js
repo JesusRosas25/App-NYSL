@@ -20,38 +20,40 @@ const templates = {
         </div>`,
 
         home: ` <div id="home">
+
+        <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-                        <div class="container">
-                          <img src="images/nysl_logo_1.png" alt="logo-header" id="logoHeader">
-                          <a class="navbar-brand" href="#">Northside Young Soccer Ligue</a>
-                          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                              </button>
-                          <div class="collapse navbar-collapse" id="navbarResponsive">
-                               
-                            <ul class="navbar-nav ml-auto">
-                              </template>
+          <div class="container">
+          <img src="images/nysl_logo_1.png" alt="logo-header" id="logoHeader">
+            <a class="navbar-brand" href="#">Northside Young Soccer Ligue</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+              </template>
                                 <template v-else>
-                                <li class="nav-item active">
-                                <a class="nav-link" @click="view = 'home'">Home
-                                  <span class="sr-only">(current)</span></a>
-                              </li>
-                            
-                            <li class="nav-item">
-                            <a class="nav-link" @click="view = 'schedule'">Schedule</a>
-                            </li>
-                              <li class="nav-item">
-                                <a class="nav-link" @click="view = 'contact'">Contact</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" @click="view = 'forum'">Forum</a></li>
-                            </ul>
-                            <component :is="view" :user = "guest"></component>
+                <li class="nav-item active">
+                <a class="nav-link" @click="view = 'home'">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" @click="view = 'schedule'">Schedule</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" @click="view = 'contact'">Contact</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" @click="view = 'forum'">Forum</a></li>
+                </li>
+              </ul>
+              <component :is="view" :user = "guest"></component>
                             </template>
                             </main>
-                            </div>
-                            </div>
-                            </nav>
+            </div>
+          </div>
+        </nav>
         
         <h3>Upcoming Events<span class="title-background1"></span></h3>
         <header>
@@ -63,33 +65,33 @@ const templates = {
                       </ol>
                       <div class="carousel-inner" role="listbox">
                         <!-- Slide One - Set the background image for this slide in the line below -->
-                        <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/RCAhiGJsUUE/1920x1080')">
+                        <div class="carousel-item active"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.654060426155!2d-87.63123908514262!3d41.90029637200488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34e07f6bac3%3A0x68a82e5d59952c86!2s24%20W%20Walton%20St%2C%20Chicago%2C%20IL%2060610%2C%20EE.%20UU.!5e0!3m2!1ses!2sar!4v1576451238433!5m2!1ses!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                           <div class="carousel-caption d-none d-md-block">
-                            <h3 class="display-4">First Slide</h3>
-                            <p class="lead">This is a description for the first slide.</p>
+                            <h3 class="display-4">Marjorie P Hart</h3>
+                            <p class="lead">2625 N. Orchard St., Chicago, IL 60614</p>
                           </div>
                         </div>
                         <!-- Slide Two - Set the background image for this slide in the line below -->
-                        <div class="carousel-item" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1920x1080')">
+                        <div class="carousel-item" style="background-image: url('https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/News/childrens-health/082616_childsports_THUMB_LARGE.jpg?w=1155')">
                           <div class="carousel-caption d-none d-md-block">
-                            <h3 class="display-4">Second Slide</h3>
-                            <p class="lead">This is a description for the second slide.</p>
+                            <h3 class="display-4">NYSL</h3>
+                            <p class="lead"></p>
                           </div>
                         </div>
                         <!-- Slide Three - Set the background image for this slide in the line below -->
-                        <div class="carousel-item" style="background-image: url('https://source.unsplash.com/O7fzqFEfLlo/1920x1080')">
+                        <div class="carousel-item" style="background-image: url('https://activeforlife.com/content/uploads/2013/04/young-soccer-players.jpg')">
                           <div class="carousel-caption d-none d-md-block">
-                            <h3 class="display-4">Third Slide</h3>
-                            <p class="lead">This is a description for the third slide.</p>
+                            <h3 class="display-4">Training</h3>
+                            <p class="lead">.</p>
                           </div>
                         </div>
                       </div>
-                      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
+                      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" >
+                            <span class="carousel-control-prev-icon" aria-hidden="true" style= "background-color: black"></span>
+                            <span class="sr-only" >Previous</span>
                           </a>
                       <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="carousel-control-next-icon" aria-hidden="true" style= "background-color: black"></span>
                             <span class="sr-only">Next</span>
                           </a>
                     </div>
@@ -98,52 +100,91 @@ const templates = {
                   <!-- Page Content -->
                   <section class="py-5">
                     <div class="container">
-                      <h1 class="font-weight-light">Half Page Image Slider</h1>
-                      <p class="lead">The background images for the slider are set directly in the HTML using inline CSS. The images in this snippet are from <a href="https://unsplash.com">Unsplash</a>!</p>
+                      <h1 class="font-weight-light">NYSL</h1>
+                      <p class="lead"><a href=""></a>!</p>
                     </div>
                   </section>
-        <div class="card-deck mb-5">
-        <div class="card bg-white rounded shadow">
-        <img class="card-img-top" src="images/Soccer for kids.jpg" alt="Card image cap">
-        <div class="card-body">
-        <h5 class="card-title">August 14</h5>
-        <p class="card-text">NYSL Webapp presentation</p>
-        <p class="card-text">
-        </p>
-        </div>
-        </div>
-        <div class="card bg-white rounded shadow">
-        <img class="card-img-top" src="images/White and Black Soccer Ball on Side of Green Grass….jpg" alt="Card image cap">
-        <div class="card-body">
-        <h5 class="card-title">August 16</h5>
-        <p class="card-text">Season Kick-off: Meet the Teams</p>
-        </div>
-        </div>
-        <div class="card bg-white rounded shadow">
-        <img class="card-img-top" src="images/genMid.09400371_1.jpg" alt="Card image cap">
-        <div class="card-body">
-        <h5 class="card-title">September 1</h5>
-        <p class="card-text">First Game of the Season (Check Game Schedule for details)</p>
-        </div>
-        </div>
-        </div>
-        </div>`,
-        
+                <div class="card-deck mb-5">
+                <div class="card bg-white rounded shadow">
+                <img class="card-img-top" src="images/Soccer for kids.jpg" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">December 14</h5>
+                <p class="card-text">NYSL</p>
+                <p class="card-text">
+                </p>
+                </div>
+                </div>
+                <div class="card bg-white rounded shadow">
+                <img class="card-img-top" src="images/White and Black Soccer Ball on Side of Green Grass….jpg" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">December 08</h5>
+                <p class="card-text">Season Kick-off: Meet the Teams</p>
+                </div>
+                </div>
+                <div class="card bg-white rounded shadow">
+                <img class="card-img-top" src="images/genMid.09400371_1.jpg" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">December 10</h5>
+                <p class="card-text">First Game of the Season (Check Game Schedule for details)</p>
+                </div>
+                </div>
+
+                </div>
+                </div>`,
+                
     schedule:`<div id="schedule">
-    <template v-if="showInfo">
-        <button @click="showInfo = false">Back</button>
-        <match-info :match="match" :user="user"></match-info>
-        </template>
-        <template v-else>
-        <ul>
-            <li v-for="match in matches">
-                <span>{{match.date}}</span> <span>{{match.nombre1}} vs {{match.team2}}</span>
-                <button class="btn" @click="matchInfo(match)">+</button>
-            </li>
-        </ul>
-        </template>
-    
-</div>`,
+            <template v-if="showInfo">
+                <button type="button" class="btn btn-danger" @click="showInfo">Back</button>
+                <match-info :match="match" :user="user"></match-info>
+                </template>
+                <template v-else>
+                <ul>
+                <li v-for="match in matches">
+                <div class="card">
+                <div class="card-title">{{match.title}}</div>
+                <div class="card-body">
+                <h5 class="card-title">{{match.date}}          {{match.hour}} </h5>
+                <p class="card-text">{{match.location}}</p>
+                <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">{{match.location}}
+                </button>
+                <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                <table id="tabla-partidos" class="table table-hover">
+                <tr>
+                <td colspan= "3" class="p-3">
+                <a href="https://fireflychat-c31f1.firebaseapp.com/" class="btn btn-primary">Go forum</a> 
+                </td> 
+                </tr>
+                <tr>
+                <td colspan= "9" class="p-9">
+                <iframe width="100%" src= {{match.map}} class="border-0 rounded shadow"></iframe>
+                </td>
+                </tr>
+                </div>
+                </div>
+                </li>
+                    </ul>
+                    </template>
+                    
+                    </div>`,
+matchInfo: `<div>
+	            			<div class="card">
+	            				<p>{{match.team1}} vs {{match.team2}}</p>
+	            				<p>{{match.date}} at {{match.hour}}</p>
+	            				<p>{{match.location}}</p>	
+	            			</div>
+	            			<div class="forum">
+	            				<div v-for="(value,key) in comments" class="commentBubble">
+	            					<p>{{value.username}}:</p>
+	            					<p>{{value.post}}</p>
+	            				</div>
+	            				<div>
+	            					<input type="text" id="comment">
+	            					<button @click="comment(match.id)">Comment</button>
+	            				</div>
+	            			</div>
+
+            			</div>`,
     contact: `<div id ="contact">
             <div class="section">
             <h2><span>Contact Me</span></h2>
@@ -224,7 +265,7 @@ const templates = {
             </div>
             </main>
             </div>
-            </div>`}
+</div>`}
     
     let app = new Vue({
         el: '#app',
@@ -232,7 +273,7 @@ const templates = {
             view: 'home',
             games: {},
             user: 'guest',
-            chat: {},
+           
             
         },
         
@@ -340,54 +381,54 @@ const templates = {
                 template: templates.schedule,
 
                 components: {
-                    'chat': {
+                    'match-info': {
                         props: ['user','match'],
                         data:function(){
                             return {
-                                comments: {}
+                                comments: []
                             }
                         },
                         created(){
                             this.getComments(this.match.id)
                         },
                         methods: {
-                            async getComments(matchId){
-                                let comments
-                                await firebase.database().ref(`chat/${matchId}`)
-                                .once('value')
-                                .then(function(snapshot){
-                                    comments = snapshot.val()
-                                })
-                                this.comments = comments
+                        getComments(matchId){
+                            let self = this
+
+                            firebase.database().ref(`forum/${matchId}`)
+                            .on('child_added', function(snapshot){
+                                self.comments.push(snapshot.val())
+                                
+                            })
                             },
-                            async comment(matchId){
+                            comment(matchId){
                                 let input = document.getElementById('comment')
-                                let newKey = firebase.database().ref(`chat/${matchId}/`).push().key
+                                let newKey = firebase.database().ref(`forum/${matchId}`).push().key
                                 let update = {}
-                                update[`chat/${matchId}/${newKey}`] = {
+                                update[`forum/${matchId}/${newKey}`] = {
                                     uid: this.user.uid,
                                     username: this.user.displayName,
                                     email: this.user.email,
                                     post: input.value,
                                     match: this.match.id
                                 }
-                                await firebase.database().ref().update(update)
+                                firebase.database().ref().update(update)
                                 input.value = ""
-                                this.getComments(this.match.id)
+                                
                             }
                         },
-                        template: templates.chat
+                        template: templates.matchIhnfo
                     }
                 }
             },
-            about: {
+            /*about: {
                 props: ['guest'],
                 template: templates.about
-            },
-            forum: {
+            },*/
+            /*forum: {
                 props: ['user'],
                 template: templates.forum
-            },
+            },*/
             contact: {
                 props: ['user'],
                 template: templates.contact
